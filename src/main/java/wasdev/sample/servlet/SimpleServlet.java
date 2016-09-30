@@ -31,10 +31,11 @@ public class SimpleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         main(null);
-        response.setContentType("text/html");
-        //response.getWriter().print("Hello World!");
-        response.getWriter().print("result is " + result.toString());
-        System.out.println("result is " + result);
+        //response.setContentType("text/html");
+        //response.getWriter().print("result is " + result.toString());
+        //System.out.println("result is " + result);
+        response.setContentType("application/json");
+        response.getWriter().print("This is test of modification");
     }
     
     private static LanguageTranslation service = new LanguageTranslation();
