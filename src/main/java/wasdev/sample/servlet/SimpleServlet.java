@@ -30,15 +30,19 @@ public class SimpleServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        main(null);
         response.setContentType("text/html");
-        response.getWriter().print("Hello World!");
+        //response.getWriter().print("Hello World!");
+        response.getWriter().print("result is " + result.toString());
+        System.out.println("result is " + result);
     }
     
     private static LanguageTranslation service = new LanguageTranslation();
+    private static TranslationResult result;
     
     public static void main(String[] args) {
     	service.setUsernameAndPassword("d02a80d2-fb2a-4941-9d74-7ed0e72541c4", "i6YdoXRKCWEz");
-    	TranslationResult result = service.translate("hello", Language.ENGLISH, Language.SPANISH).execute();
+    	result = service.translate("hello", Language.ENGLISH, Language.SPANISH).execute();
     	System.out.println(result);
     }
     
