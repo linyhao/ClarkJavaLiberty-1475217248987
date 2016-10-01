@@ -30,7 +30,7 @@ public class SimpleServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        main(null);
+        getTranslatedResult(null);
         //response.setContentType("text/html");
         //response.getWriter().print("result is " + result.toString());
         //System.out.println("result is " + result);
@@ -41,10 +41,12 @@ public class SimpleServlet extends HttpServlet {
     private static LanguageTranslation service = new LanguageTranslation();
     private static TranslationResult result;
     
-    public static void main(String[] args) {
+    public static void getTranslatedResult {
+    	//System.getenv("VCAP_SERVICES");
+    	//service.setUsernameAndPassword("d02a80d2-fb2a-4941-9d74-7ed0e72541c4", "i6YdoXRKCWEz");
+    	service.setEndPoint("https://gateway.watsonplatform.net/language-translator/api");
     	service.setUsernameAndPassword("d02a80d2-fb2a-4941-9d74-7ed0e72541c4", "i6YdoXRKCWEz");
-    	result = service.translate("hello", Language.ENGLISH, Language.SPANISH).execute();
-    	System.out.println(result);
+    	result = service.translate("This is test of translation", Language.ENGLISH, Language.SPANISH).execute();
     }
     
     /*private static ConversationService service = new ConversationService("2016-09-30");
