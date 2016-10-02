@@ -35,7 +35,7 @@ public class SimpleServlet extends HttpServlet {
         //response.getWriter().print("result is " + result.toString());
         //System.out.println("result is " + result);
         response.setContentType("application/json");
-        response.getWriter().print("This is test of modification");
+        response.getWriter().print("This is test of modification 2");
     }
     
     private static LanguageTranslation service = new LanguageTranslation();
@@ -46,7 +46,7 @@ public class SimpleServlet extends HttpServlet {
     	//service.setUsernameAndPassword("d02a80d2-fb2a-4941-9d74-7ed0e72541c4", "i6YdoXRKCWEz");
     	service.setEndPoint("https://gateway.watsonplatform.net/language-translator/api");
     	service.setUsernameAndPassword("d02a80d2-fb2a-4941-9d74-7ed0e72541c4", "i6YdoXRKCWEz");
-    	result = service.translate("This is test of translation", Language.ENGLISH, Language.SPANISH).execute();
+    	result = service.translate("This is test of translation in English", Language.ENGLISH, Language.SPANISH).execute();
     }
     
     /*private static ConversationService service = new ConversationService("2016-09-30");
