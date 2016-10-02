@@ -7,8 +7,12 @@
       "Space": "dev"
     },
     "Name": "ClarkJavaLiberty",
-    "Instrumentation": {}
+    "Instrumentation": {
+      "services": [
+        "Language Translator-xe"
+      ]
+    }
   },
-  "Path": "",
+  "Path": "manifest.yml",
   "Type": "Cloud Foundry"
 }
