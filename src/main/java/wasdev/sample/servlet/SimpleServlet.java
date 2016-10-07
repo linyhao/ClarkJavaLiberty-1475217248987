@@ -30,23 +30,24 @@ public class SimpleServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        getTranslatedResult();
+    	String content = new String("This is English good morning!");
+        getTranslatedResult(content);
         //response.setContentType("text/html");
         //response.getWriter().print("result is " + result.toString());
         //System.out.println("result is " + result);
         response.setContentType("application/json");
-        response.getWriter().print("V20 Dian Dian " + result.toString());
+        response.getWriter().print("V21 Dian Dian " + result.toString());
     }
     
     private static LanguageTranslation service = new LanguageTranslation();
     private static TranslationResult result;
     
-    public static void getTranslatedResult() {
+    public static void getTranslatedResult(String content) {
     	//System.getenv("VCAP_SERVICES");
     	//service.setUsernameAndPassword("d02a80d2-fb2a-4941-9d74-7ed0e72541c4", "i6YdoXRKCWEz");
     	service.setEndPoint("https://gateway.watsonplatform.net/language-translator/api");
     	service.setUsernameAndPassword("d02a80d2-fb2a-4941-9d74-7ed0e72541c4", "i6YdoXRKCWEz");
-    	result = service.translate("This is English good morning!", Language.ENGLISH, Language.SPANISH).execute();
+    	result = service.translate(content, Language.ENGLISH, Language.SPANISH).execute();
     }
     
     /*private static ConversationService service = new ConversationService("2016-09-30");
