@@ -31,12 +31,13 @@ public class SimpleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	String content = new String("This is English good morning!");
-        getTranslatedResult(content);
+    	String param = request.getParameter("content");
+        getTranslatedResult(param);
         //response.setContentType("text/html");
         //response.getWriter().print("result is " + result.toString());
         //System.out.println("result is " + result);
         response.setContentType("application/json");
-        response.getWriter().print("V21 Dian Dian " + result.toString());
+        response.getWriter().print("V22 Dian Dian " + result.toString());
     }
     
     private static LanguageTranslation service = new LanguageTranslation();
