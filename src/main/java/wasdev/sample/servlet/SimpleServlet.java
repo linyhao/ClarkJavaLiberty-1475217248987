@@ -36,8 +36,8 @@ public class SimpleServlet extends HttpServlet {
         //response.setContentType("text/html");
         //response.getWriter().print("result is " + result.toString());
         //System.out.println("result is " + result);
-        response.setContentType("application/json");
-        response.getWriter().print("V22 Dian Dian " + result.toString());
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().print("V23 Dian Dian " + result.toString());
     }
     
     private static LanguageTranslation service = new LanguageTranslation();
