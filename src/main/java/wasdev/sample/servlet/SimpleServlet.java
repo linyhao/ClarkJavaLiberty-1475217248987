@@ -1,3 +1,12 @@
+/******************************************************************************
+ * Title: POC of Watson API Encapsulation: Language Translation
+ * Author: Clark Lin
+ * History:
+ * Version    Date               Comment
+ * V25        2016/10/08         First working version
+ *                               Return English -> Spanish Translation result
+ ******************************************************************************/
+
 package wasdev.sample.servlet;
 
 import java.io.IOException;
@@ -30,30 +39,23 @@ public class SimpleServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String content = new String("This is English good morning!");
+    	// Assume content in source language is passed through URL
     	String param = request.getParameter("content");
         getTranslatedResult(param);
-        //response.setContentType("text/html");
-        //response.getWriter().print("result is " + result.toString());
-        //System.out.println("result is " + result);
         response.setContentType("application/json;charset=UTF-8");
-        response.getWriter().print("V24 Dian Dian " + result.getFirstTranslation());
+        response.getWriter().print(result.getFirstTranslation());
     }
     
     private static LanguageTranslation service = new LanguageTranslation();
     private static TranslationResult result;
     
     public static void getTranslatedResult(String content) {
-    	//System.getenv("VCAP_SERVICES");
-    	//service.setUsernameAndPassword("d02a80d2-fb2a-4941-9d74-7ed0e72541c4", "i6YdoXRKCWEz");
+    	// System.getenv("VCAP_SERVICES");
+    	// Hardcode language translation API URI and cridential
     	service.setEndPoint("https://gateway.watsonplatform.net/language-translator/api");
     	service.setUsernameAndPassword("d02a80d2-fb2a-4941-9d74-7ed0e72541c4", "i6YdoXRKCWEz");
+    	// Invoke Watson API to translate
     	result = service.translate(content, Language.ENGLISH, Language.SPANISH).execute();
     }
     
-    /*private static ConversationService service = new ConversationService("2016-09-30");
-    
-    public static void main(String[] args) {
-    	service
-    }*/
 }
